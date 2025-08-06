@@ -23,7 +23,7 @@ const AddProducts = () => {
 
   try{
     const res = await 
-    axios.post("http://localhost:3000/products/add",formData);
+    axios.post("https://shopy-backend-46ko.onrender.com/products/add",formData);
     console.log("Product added",res.data);
     navigate("/admin/");
     

@@ -9,7 +9,7 @@ const UserHome = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/").then((res) => {
+    axios.get("https://shopy-backend-46ko.onrender.com/").then((res) => {
       setProducts(res.data.products);
     });
   }, []);
