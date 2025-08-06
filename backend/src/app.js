@@ -1,6 +1,22 @@
 const express = require("express");
-const router = express.Router();
-const Product = require("../models/product.model");
+const cors = require("cors");
+const productRouter = require("./routes/product.router");
+
+const app = express();
+
+// CORS configuration
+app.use(cors({
+    origin: [
+        'https://shopy-frontend-jvrq.onrender.com',
+        'http://localhost:3000'  // Keep this during development
+    ],
+    credentials: true
+}));
+
+app.use(express.json());
+
+// Routes
+app.use("/products", productRouter);
 
 // ...existing code...
 
@@ -24,10 +40,7 @@ router.post("/add", async (req, res) => {
 
 // ...existing code...
 
-module.exports = router;import { useNavigate } from 'react-router-dom';
-
-const AddProduct = () => {
-    const navigate = useNavigate();
+module.exports = app;
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -50,5 +63,4 @@ const AddProduct = () => {
         }
     };
 
-    // ...rest of your component code...
-};
+    module.exports = app;
